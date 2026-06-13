@@ -1,0 +1,38 @@
+# Core App UI
+streamlit
+
+# Audio processing & YouTube ingestion
+yt-dlp
+pydub
+ffmpeg-python
+soundfile
+librosa
+
+# Whisper (local transcription)
+openai-whisper
+torch
+torchaudio
+
+# NLP / LLM Pipeline
+langchain
+langchain-core
+langchain-community
+
+# Mistral API integration
+mistralai
+requests
+
+# RAG stack (vector DB + embeddings)
+chromadb
+sentence-transformers
+huggingface-hub
+transformers
+
+# Utilities
+numpy
+pandas
+tqdm
+python-dotenv
+
+# Export (PDF/TXT reports)
+reportlab
