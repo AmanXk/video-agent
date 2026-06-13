@@ -20,3 +20,12 @@ def download_audio(url: str) -> str:
         audio_file = ydl.prepare_filename(info_dict).replace('.webm', '.wav').replace('.m4a', '.wav')
         return audio_file
     
+def convert_to_wav(input_path: str) -> str:
+    """
+    Convert an audio file to WAV format using pydub.
+    """
+    output_path = os.path.splitext(input_path)[0] + '_converted.wav'
+    audio = AudioSegment.from_file(input_path)
+    audio = audio.set_frame_rate(16000).set_channels(1)
+    audio.export(output_path, format='wav')
+    return output_path
