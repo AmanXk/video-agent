@@ -119,15 +119,16 @@ chunks = chunk_audio(
 
 print(chunks)
 ```
-
 ## Project Structure
-
-```text
 .
 ├── downloads/
-├── audio_utils.py
+├── utils/
+│   └── audio_processor.py
+├── .gitignore
+├── requirements.txt
 └── README.md
-```
+
+> Note: Generated audio files inside the `downloads/` directory are not intended to be tracked in version control.
 
 ## Output Example
 
