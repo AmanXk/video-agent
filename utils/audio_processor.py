@@ -46,3 +46,17 @@ def chunk_audio(input_path: str, chunk_minutes: int = 10) -> list:
         chunks.append(chunk_path)
     return chunks
 
+def process_input(source: str) -> list:
+    """
+    Process the input source, which can be a URL or a local file path.
+    """
+    if source.startswith("http://") or source.startswith("https://"):
+        print('detected url, downloading audio...')
+        audio_path = download_audio(source)
+    else:
+        print('detected local file, processing audio...')
+        audio_path = convert_to_wav(source)
+    print('chunking audio...')
+    chunks = chunk_audio(audio_path)
+    print(f'audio raedy - {len(chunks)} chunks created')
+    return chunks
