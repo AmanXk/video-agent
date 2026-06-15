@@ -102,7 +102,36 @@ chunks = chunk_audio(
     chunk_minutes=5
 )
 ```
+## 🚀 Full Audio Processing + Transcription Pipeline
 
+This project now supports an end-to-end pipeline that converts raw audio input into text using Whisper.
+
+---
+
+### `process_input(source: str) -> list`
+
+Handles the full audio preprocessing workflow before transcription.
+
+### Supported Input Types
+- YouTube URL (`http://` or `https://`)
+- Local audio file path
+
+### Workflow
+- Detect input type (URL or local file)
+- Download audio using YouTube extractor (if URL)
+- Convert audio to standardized WAV format (if local file)
+- Split audio into smaller chunks for processing
+
+### Returns
+- `list`: Paths of generated audio chunks
+
+### Example
+
+```python
+from utils.audio_processor import process_input
+
+chunks = process_input("https://www.youtube.com/watch?v=VIDEO_ID")
+```
 ## Example Usage
 
 ```python
@@ -127,7 +156,7 @@ print(chunks)
 ├── .gitignore
 ├── requirements.txt
 └── README.md
-
+```
 > Note: Generated audio files inside the `downloads/` directory are not intended to be tracked in version control.
 
 ## Output Example
