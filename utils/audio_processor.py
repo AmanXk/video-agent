@@ -7,7 +7,7 @@ os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 def download_audio(url: str) -> str:
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': os.path.join(DOWNLOAD_DIR, '%(id)s.%(ext)s'),
+        'outtmpl': os.path.join(DOWNLOAD_DIR, '%(title)s.%(ext)s'),
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'wav',
@@ -20,7 +20,6 @@ def download_audio(url: str) -> str:
         audio_file = ydl.prepare_filename(info_dict).replace('.webm', '.wav').replace('.m4a', '.wav')
         return audio_file
     
-
 def convert_to_wav(input_path: str) -> str:
     """
     Convert an audio file to WAV format using pydub.
@@ -30,7 +29,6 @@ def convert_to_wav(input_path: str) -> str:
     audio = audio.set_frame_rate(16000).set_channels(1)
     audio.export(output_path, format='wav')
     return output_path
-
 
 def chunk_audio(input_path: str, chunk_minutes: int = 10) -> list:
     """
@@ -58,5 +56,5 @@ def process_input(source: str) -> list:
         audio_path = convert_to_wav(source)
     print('chunking audio...')
     chunks = chunk_audio(audio_path)
-    print(f'audio raedy - {len(chunks)} chunks created')
+    print(f'audio ready - {len(chunks)} chunks created')
     return chunks
