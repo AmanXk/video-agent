@@ -2,14 +2,14 @@ import whisper
 import os
 WHISPER_MODEL = os.getenv("WHISPER_MODEL", "small")
 
-_modle = None
+_model = None
 
 def load_model():
-    global _modle
-    if _modle is None:
-        print(f'loading whisper model: {_modle}...')
-        _modle = whisper.load_model(WHISPER_MODEL)
-    return _modle
+    global _model
+    if _model is None:
+        print(f'loading whisper model: {_model}...')
+        _model = whisper.load_model(WHISPER_MODEL)
+    return _model
 
 def transcribe_chunk(chunk_path: str, translate: bool = False) -> str:
     model = load_model()
